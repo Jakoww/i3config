@@ -13,11 +13,11 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:JetBrains Mono Light 8
+font pango:Terminus (TTF)  8
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:JetBrains Mono Light 8
+font pango:JetBrains Mono Light 8
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -29,7 +29,6 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
-
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -40,7 +39,8 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec rofi -show drun -theme Arc-Dark
+bindsym $mod+d exec rofi -show drun  -show-icons true -font "Terminus (TTF) 14"
+bindsym $mod+Tab exec rofi -show window -show-icons true -font "Terminus (TTF) 14"
 #bindsym $mod+d exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
@@ -99,13 +99,13 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1: Terminal"
-set $ws2 "2: Brave"
-set $ws3 "3: Games"
-set $ws4 "4: Discord"
-set $ws5 "5: Spotify"
-set $ws6 "6: Programming"
-set $ws7 "7: Settings"
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
@@ -191,28 +191,10 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #i
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
-exec_always feh --bg-scale /home/jakow/wallpapers/1637716360543.jpg
+exec_always feh --bg-scale /home/jakow/images/3.png
 assign [class="Brave-browser"] $ws2
-assign [class="discord"] $ws4
+assign [class="discord"] $ws5
 assign [class="spotify"] $ws5
-
-# Nord colours
-set $nord0   #2E3440
-set $nord1   #3B4252
-set $nord2   #434C5E
-set $nord3   #4C566A
-set $nord4   #D8DEE9
-set $nord5   #E5E9F0
-set $nord6   #ECEFF4
-set $nord7   #8FBCBB
-set $nord8   #88C0D0
-set $nord9   #81A1C1
-set $nord10  #5E81AC
-set $nord11  #BF616A
-set $nord12  #D08770
-set $nord13  #EBCB8B
-set $nord14  #A3BE8C
-set $nord15  #B48EAD
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -224,31 +206,31 @@ client.focused #81a8c1 #81a1c1 #81a1c1 #81a1c1     #81a8c1
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-    
 
-  
+
+
 exec --no-startup-id Dunst
 exec --no-startup-id systemctl enable pulseaudio.service --user
 exec xcompmgr -c -f -nexec xcompmgr -c -f -n
 
-bar {
-        status_command ~/bumblebee-status/bumblebee-status \
-        -t iceberg \
-        -m time date hostname battery spotify \
-		-p time.format="%H:%M" date.format="%d/%m/%y"
-        position top
-        font pango: JetBrains Mono Light 10
-		strip_workspace_numbers yes
-		 colors {
-        background #0e2127 \
-	    statusline #0e2127 \
+#bar {
+   #     status_command ~/bumblebee-status/bumblebee-status \
+  #     -t iceberg \
+ #      -m time date hostname battery spotify \
+#		-p time.format="%H:%M" date.format="%d/%m/%y"
+  #      position top
+ #       font pango: JetBrains Mono Light 10
+#		strip_workspace_numbers yes
+#		 colors {
+      # background #0e2127 \
+	   # statusline #0e2127 \
 #                           border    background    text
-        focused_workspace  #0e2127   #0e2127   #fdf8dd
-	    active_workspace   #0e2127   #0e2127   #878c76
-	    inactive_workspace #0e2127   #0e2127   #878c76
-	    urgent_workspace   #1A1A1A   #0e2127   #878c76
-     }
-        }
+       # focused_workspace  #0e2127   #0e2127   #fdf8dd
+	   # active_workspace   #0e2127   #0e2127   #878c76
+	  #  inactive_workspace #0e2127   #0e2127   #878c76
+	 #   urgent_workspace   #1A1A1A   #0e2127   #878c76
+    # }
+       # }
          # class                 border  backgr. text    indicator #child_border
 client.focused           #2D383A #92A9BD #2D383A #072227   #6E85B2
 client.focused_inactive #2D383A #092A9BD #2D383A #072227   #1A1A2E
@@ -258,9 +240,11 @@ client.placeholder      #2D383A #92A9BD #2D383A #000000   #0c0c0c
 
 client.background       #2D383A
 
-exec_always --no-startup-id picom
-
+exec_always --no-startup-id DRI_PRIME=0 picom --experimental-backends
+exec_always ~/.config/polybar/launch.sh
 
 gaps inner 10
 gaps outer 0
 smart_gaps on
+
+exec --no-startup-id setxkbmap us,si -option 'grp:alt_shift_toggle'
