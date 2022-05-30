@@ -191,10 +191,14 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #i
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
-exec_always feh --bg-scale /home/jakow/images/3.png
+#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +5% #increase sound volume
+#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 1 -5% #decrease sound volume
+#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle # mute sound
+
+exec_always feh --bg-scale /home/jakow/images/wave.png
 assign [class="Brave-browser"] $ws2
 assign [class="discord"] $ws5
-assign [class="spotify"] $ws5
+assign [class="Spotify"] $ws5
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -206,7 +210,10 @@ client.focused #81a8c1 #81a1c1 #81a1c1 #81a1c1     #81a8c1
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-
+#bar{
+#	status_command i3status
+#	font Terminus(TTF) 14
+#}
 
 
 exec --no-startup-id Dunst
